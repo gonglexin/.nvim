@@ -44,7 +44,6 @@ NeoBundle 'ervandew/supertab'
 " Colorscheme
 NeoBundle 'molokai'
 NeoBundle 'w0ng/vim-hybrid'
-"NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 " Programming
 NeoBundle 'vim-ruby/vim-ruby'
@@ -84,8 +83,6 @@ set nu
 
 nmap <leader>s :source $MYVIMRC<CR>
 nmap <leader>e :e $MYVIMRC<CR>
-
-"colorscheme Tomorrow-Night-Eighties
 
 set nowrap
 set nobackup
@@ -127,8 +124,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 " vimux
 let g:VimuxPromptString = "=>"
 let g:VimuxHeight = "30"
-" autocmd FileType ruby       map <Leader>rr :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
-autocmd FileType ruby       map <Leader>rr :call VimuxRunCommand("clear; ruby " . bufname("%"))<CR>
+autocmd FileType ruby       map <Leader>rr :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
 autocmd FileType javascript map <Leader>rr :call VimuxRunCommand("clear; node " . bufname("%"))<CR>
 autocmd FileType go         map <Leader>rr :call VimuxRunCommand("clear; go run " . bufname("%"))<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
@@ -182,13 +178,13 @@ nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <space>/ :Unite grep:.<CR>
 nnoremap <leader>b :Unite -quick-match buffer<CR>
 nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor'
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_grep_encoding = 'utf-8'
-elseif executable('pt')
-  let g:unite_source_grep_command = 'pt'
+elseif executable('ag')
+  let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor'
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_grep_encoding = 'utf-8'
